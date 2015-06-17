@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Onsen UI router</title>
+
+	<script src="https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.2/build/js/angular/angular.min.js"></script>
+	<script src="https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.2/build/js/onsenui.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers.js"></script>
+
+	<link rel="stylesheet" href="https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.2/build/css/onsenui.css">
+	<link rel="stylesheet" href="https://cdn.rawgit.com/OnsenUI/OnsenUI/1.3.2/build/css/onsen-css-components.css">
+	<link rel="stylesheet" href="style/style.css">
+
+</head>
+<body ng-app="myApp">
+
+	<ons-tabbar var="myTabbar">
+	  <ons-tab ui-sref="master">
+	    <ons-icon icon="ion-home"></ons-icon>
+	    <span style="font-size: 14px">MasterDetail</span>
+	  </ons-tab>
+	  <ons-tab ui-sref="sliding">
+	    <ons-icon icon="ion-star"></ons-icon>
+	    <span style="font-size: 14px">SlidingMenu</span>
+	  </ons-tab>
+	</ons-tabbar>
+
+	<ons-template id="html/tab1.html">
+		<ons-navigator title="Navigator" var="myNavigator" page="html/master.html">
+		</ons-navigator>
+	</ons-template>
+
+	<ons-template id="html/tab2.html">
+		<ons-sliding-menu menu-page="html/menu.html" side="left" var="myMenu" type="reveal" max-slide-distance="260px" swipeable="true">
+		</ons-sliding-menu>
+	</ons-template>
+
+</body>
+</html>
