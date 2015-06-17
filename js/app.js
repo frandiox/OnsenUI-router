@@ -3,17 +3,29 @@ var app = angular.module('myApp', ['onsen', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
-	// By default show Tab 1 - MasterDetail example
-	$urlRouterProvider.otherwise("/master");
+	// By default show Tab 1 - Navigator MasterDetail example
+	$urlRouterProvider.otherwise("/navigator");
 
 	$stateProvider
 
-		// Tab 1 - MasterDetail example - List of items
-		.state('master', {
-			url: '/master',
-			onEnter: ['$rootScope', function($rootScope) {
+		// Tab 1 - MasterDetail example - Navigator init
+		.state('navigator', {
+			url: '/navigator',
+			onEnter: ['$rootScope', '$state', '$timeout', function($rootScope, $state, $timeout) {
 				$rootScope.myTabbar.setActiveTab(0);
 				$rootScope.myTabbar.loadPage('html/tab1.html');
+				$timeout(function(){
+					$state.go('master');
+				});
+			}]
+		})
+
+		// Tab 1 - MasterDetail example - List of items
+		.state('master', {
+			parent: 'navigator',
+			url: '/master',
+			onEnter: ['$rootScope', function($rootScope) {
+				$rootScope.myNavigator.resetToPage('html/master.html');
 			}]
 		})
 
@@ -29,15 +41,15 @@ app.config(function($stateProvider, $urlRouterProvider) {
 			}
 		})
 
-		// Tab 2 - SlidingMenu example - Redirects to the main page
+		// Tab 2 - SlidingMenu example - SlidingMenu init
 		.state('sliding', {
 			url: '/sliding',
 			onEnter: ['$rootScope', '$state', '$timeout', function($rootScope, $state, $timeout) {
-					$rootScope.myTabbar.setActiveTab(1);
-					$rootScope.myTabbar.loadPage('html/tab2.html');
-					$timeout(function(){
-						$state.go('main');
-					});
+				$rootScope.myTabbar.setActiveTab(1);
+				$rootScope.myTabbar.loadPage('html/tab2.html');
+				$timeout(function(){
+					$state.go('main');
+				});
 			}]
 		})
 

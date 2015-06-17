@@ -18,7 +18,7 @@
 <body ng-app="myApp">
 
 	<ons-tabbar var="myTabbar">
-		<ons-tab ui-sref="master">
+		<ons-tab ui-sref="navigator">
 			<ons-icon icon="ion-home"></ons-icon>
 			<span style="font-size: 14px">MasterDetail</span>
 		</ons-tab>
@@ -29,7 +29,7 @@
 	</ons-tabbar>
 
 	<ons-template id="html/tab1.html">
-		<ons-navigator title="Navigator" var="myNavigator" page="html/master.html">
+		<ons-navigator title="Navigator" var="myNavigator">
 		</ons-navigator>
 	</ons-template>
 
