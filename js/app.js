@@ -15,13 +15,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				$rootScope.myTabbar.setActiveTab(0);
 				$rootScope.myTabbar.loadPage('html/tab1.html');
 				$timeout(function(){
-					$state.go('master');
+					$state.go('navigator.master');
 				});
 			}]
 		})
 
 		// Tab 1 - MasterDetail example - List of items
-		.state('master', {
+		.state('navigator.master', {
 			parent: 'navigator',
 			url: '/master',
 			onEnter: ['$rootScope', function($rootScope) {
@@ -30,8 +30,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 		// Tab 1 - MasterDetail example - Item details
-		.state('detail', {
-			parent: 'master',
+		.state('navigator.master.detail', {
+			parent: 'navigator.master',
 			url: '/detail/:index',
 			onEnter: ['$rootScope','$stateParams', function($rootScope,$stateParams) {
 				$rootScope.myNavigator.pushPage('html/detail.html', {'index': $stateParams.index});
@@ -48,13 +48,13 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				$rootScope.myTabbar.setActiveTab(1);
 				$rootScope.myTabbar.loadPage('html/tab2.html');
 				$timeout(function(){
-					$state.go('main');
+					$state.go('sliding.main');
 				});
 			}]
 		})
 
 		// Tab 2 - SlidingMenu example - Landing page
-		.state('main', {
+		.state('sliding.main', {
 			parent: 'sliding',
 			url: '/main',
 			onEnter: ['$rootScope', function($rootScope) {
@@ -63,7 +63,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 		// Tab 2 - SlidingMenu example - Example page 1
-		.state('page1', {
+		.state('sliding.page1', {
 			parent: 'sliding',
 			url: '/page1',
 			onEnter: ['$rootScope', function($rootScope) {
@@ -72,7 +72,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		})
 
 		// Tab 2 - SlidingMenu example - Example page 2
-		.state('page2', {
+		.state('sliding.page2', {
 			parent: 'sliding',
 			url: '/page2',
 			onEnter: ['$rootScope', function($rootScope) {

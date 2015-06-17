@@ -3,7 +3,7 @@
 		<div class="center">Simple Navigation</div>
 	</ons-toolbar>
 	<ons-list ng-controller="MasterController">
-		<ons-list-item modifier="chevron" class="item" ng-repeat="item in items"  ui-sref="detail({index: $index})">
+		<ons-list-item modifier="chevron" class="item" ng-repeat="item in items"  ui-sref="navigator.master.detail({index: $index})">
 		<ons-row>
 			<ons-col width="60px">
 				<div class="item-thum"></div>
