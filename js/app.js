@@ -3,10 +3,12 @@ var app = angular.module('myApp', ['onsen', 'ui.router']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
+	// By default show Tab 1 - MasterDetail example
 	$urlRouterProvider.otherwise("/master");
 
 	$stateProvider
-		// First page of MasterDetail
+
+		// Tab 1 - MasterDetail example - List of items
 		.state('master', {
 			url: '/master',
 			onEnter: ['$rootScope', function($rootScope) {
@@ -14,7 +16,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				$rootScope.myTabbar.loadPage('html/tab1.html');
 			}]
 		})
-		// Second page of MasterDetail
+
+		// Tab 1 - MasterDetail example - Item details
 		.state('detail', {
 			parent: 'master',
 			url: '/detail/:index',
@@ -25,6 +28,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				$rootScope.myNavigator.popPage();
 			}
 		})
+
+		// Tab 2 - SlidingMenu example - Redirects to the main page
 		.state('sliding', {
 			url: '/sliding',
 			onEnter: ['$rootScope', '$state', '$timeout', function($rootScope, $state, $timeout) {
@@ -35,6 +40,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 					});
 			}]
 		})
+
+		// Tab 2 - SlidingMenu example - Landing page
 		.state('main', {
 			parent: 'sliding',
 			url: '/main',
@@ -42,6 +49,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				$rootScope.myMenu.setMainPage('html/main.html', {closeMenu: true});
 			}]
 		})
+
+		// Tab 2 - SlidingMenu example - Example page 1
 		.state('page1', {
 			parent: 'sliding',
 			url: '/page1',
@@ -49,6 +58,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 				$rootScope.myMenu.setMainPage('html/page1.html', {closeMenu: true});
 			}]
 		})
+
+		// Tab 2 - SlidingMenu example - Example page 2
 		.state('page2', {
 			parent: 'sliding',
 			url: '/page2',
