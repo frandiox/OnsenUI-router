@@ -4,7 +4,7 @@ var app = angular.module('myApp', ['onsen', 'ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
 
 	// By default show Tab 1 - Navigator MasterDetail example
-	$urlRouterProvider.otherwise("/master");
+	$urlRouterProvider.otherwise('/master');
 
 	$stateProvider
 
